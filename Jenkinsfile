@@ -33,5 +33,17 @@ pipeline {
         sh "docker rmi -f devopstest-$ENV:latest"
       }
     }
+
+    stage('Deploy') {
+      agent {
+        node {
+          label "$NODE"
+        }
+      }
+
+      steps {
+        sh "echo test"
+      }
+    }
   }
 }
