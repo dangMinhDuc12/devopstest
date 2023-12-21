@@ -3,8 +3,6 @@ pipeline {
   environment {
     ENV = "dev"
     NODE = "Jenkin-build-test"
-    NODE_DEPLOY = "Jenkin-build-test-deploy"
-    TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
   }
   
 
@@ -14,6 +12,10 @@ pipeline {
         node {
           label "$NODE"
         }
+      }
+
+      environment {
+        TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
       }
 
       steps {
@@ -31,18 +33,5 @@ pipeline {
         sh "docker rmi -f devopstest-$ENV:latest"
       }
     }
-
-  //   stage('Deploy') {
-  //     agent {
-  //       node {
-  //         label "$NODE_DEPLOY"
-  //       }
-  //     }
-
-  //     steps {
-  //       sh "docker run -d -p 3000:3000 dangminhduc/devopstest:$TAG"
-  //     }
-
-  // }
-}
+  }
 }
