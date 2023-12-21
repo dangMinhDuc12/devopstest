@@ -32,16 +32,16 @@ pipeline {
       }
     }
 
-    stage('Deploy image') {
-      agent {
-        node {
-          label "$NODEDEPLOY"
-        }
-      }
+    // stage('Deploy image') {
+    //   agent {
+    //     node {
+    //       label "$NODEDEPLOY"
+    //     }
+    //   }
 
-      steps {
-        sh "docker run -d -p 3000:3000 dangminhduc/devopstest:$TAG"
-      }
-    }
+    //   steps {
+    //     sh "docker run -d -p 3000:3000 dangminhduc/devopstest:$TAG"
+    //   }
+    // }
   }
 }
