@@ -37,7 +37,7 @@ pipeline {
     stage('Deploy') {
       agent {
         node {
-          label "$NODE"
+          label "Jenkin-build-test-deploy"
         }
       }
 
