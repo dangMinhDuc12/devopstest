@@ -35,7 +35,7 @@ pipeline {
     stage('Deploy image') {
       agent {
         node {
-          label "NODEDEPLOY"
+          label "$NODEDEPLOY"
         }
       }
 
