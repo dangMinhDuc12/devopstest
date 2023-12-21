@@ -32,17 +32,17 @@ pipeline {
       }
     }
 
-    stage('Deploy') {
-      agent {
-        node {
-          label "$NODE_DEPLOY"
-        }
-      }
+  //   stage('Deploy') {
+  //     agent {
+  //       node {
+  //         label "$NODE_DEPLOY"
+  //       }
+  //     }
 
-      steps {
-        sh "docker run -d -p 3000:3000 dangminhduc/devopstest:$TAG"
-      }
+  //     steps {
+  //       sh "docker run -d -p 3000:3000 dangminhduc/devopstest:$TAG"
+  //     }
 
-  }
+  // }
 }
 }
