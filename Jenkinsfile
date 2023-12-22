@@ -1,5 +1,6 @@
 pipeline {
-  agent none
+  agent 
+  {label 'Jenkin-build-test'}
   environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     ENV = "dev"
