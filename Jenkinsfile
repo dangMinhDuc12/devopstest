@@ -3,6 +3,7 @@ pipeline {
   environment {
     ENV = "dev"
     NODE = "Jenkin-build-test"
+    TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
   }
   
 
@@ -14,9 +15,7 @@ pipeline {
         }
       }
 
-      environment {
-        TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
-      }
+
 
       steps {
         sh "docker build -t devopstest-$ENV:latest ."
