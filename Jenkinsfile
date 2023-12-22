@@ -27,7 +27,7 @@ pipeline {
 
         sh "docker images"
 
-        sh "$DOCKERHUB_CREDENTIALS_PSW | docker login -u dangminhduc --password-stdin"
+        sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u dangminhduc --password-stdin"
 
         sh "docker tag devopstest-$ENV:latest dangminhduc/devopstest:$TAG"
 
