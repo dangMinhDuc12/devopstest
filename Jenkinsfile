@@ -3,6 +3,7 @@ pipeline {
   environment {
     ENV = "dev"
     NODE = "Jenkin-build-test"
+    DOCKERHUB_CREDENTIALS=credentials('dockerhub')
   }
   
 
@@ -26,7 +27,7 @@ pipeline {
 
         sh "docker images"
 
-        sh "cat docker.txt | docker login -u dangminhduc --password-stdin"
+        sh "$DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKER_HUB --password-stdin"
 
         sh "docker tag devopstest-$ENV:latest dangminhduc/devopstest:$TAG"
 
