@@ -14,9 +14,10 @@ pipeline {
         }
       }
 
-      environment {
-        TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
+      script {
+        env.TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
       }
+
 
       steps {
         sh "docker build -t devopstest-$ENV:latest ."
@@ -42,7 +43,7 @@ pipeline {
       }
 
       steps {
-        sh "echo test"
+        sh "docker run -d -p 3000:3000 dangminhduc/devopstest:$TAG"
       }
     }
   }
