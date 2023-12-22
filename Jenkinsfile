@@ -14,12 +14,14 @@ pipeline {
         }
       }
 
-      script {
-        env.TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
-      }
-
+    
 
       steps {
+        script {
+          env.TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
+        }
+
+
         sh "docker build -t devopstest-$ENV:latest ."
 
         sh "docker images"
