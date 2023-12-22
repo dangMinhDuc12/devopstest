@@ -1,6 +1,7 @@
 pipeline {
   agent none
   environment {
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     ENV = "dev"
     NODE = "Jenkin-build-test"
   }
@@ -19,7 +20,6 @@ pipeline {
       steps {
         script {
           env.TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
-          env.DOCKERHUB_CREDENTIALS = credentials('dockerhub')
         }
 
 
