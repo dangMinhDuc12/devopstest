@@ -34,7 +34,7 @@ pipeline {
 
         sh "docker rmi -f dangminhduc/devopstest:$TAG"
         sh "docker rmi -f devopstest-$ENV:latest"
-        sh "echo TAG_DEPLOY=$TAG > .env"
+        // sh "echo TAG_DEPLOY=$TAG > .env"
       }
     }
 
@@ -46,7 +46,8 @@ pipeline {
       }
 
       steps {
-        sh "docker-compose up -d"
+        sh "docker run -d -p 3000:3000 dangminhduc/devopstest:$TAG"
+        // sh "docker-compose up -d"
       }
     }
   }
