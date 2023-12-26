@@ -14,7 +14,7 @@ services:
       - '2000:5432'
     restart: unless-stopped
   devoptest-app:
-    build: .
+    image: dangminhduc/devopstest:${TAG}
     ports:
       - 3000:3000
     depends_on:

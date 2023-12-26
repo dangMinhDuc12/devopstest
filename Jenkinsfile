@@ -45,7 +45,7 @@ pipeline {
       }
 
       steps {
-        sh "docker run -d -p 3000:3000 dangminhduc/devopstest:$TAG"
+        sh "docker-compose up -d -e TAG=$TAG"
       }
     }
   }
