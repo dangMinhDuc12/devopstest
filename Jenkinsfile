@@ -45,7 +45,7 @@ pipeline {
       }
 
       steps {
-        sh "docker-compose up -d -e TAG=$TAG"
+        sh "docker-compose up -d"
       }
     }
   }
