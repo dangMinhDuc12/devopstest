@@ -34,7 +34,8 @@ pipeline {
 
         sh "docker rmi -f dangminhduc/devopstest:$TAG"
         sh "docker rmi -f devopstest-$ENV:latest"
-        sh "export TAG_DEPLOY = $TAG"
+        sh "TAG_DEPLOY = $TAG"
+        sh "export TAG_DEPLOY"
       }
     }
 
