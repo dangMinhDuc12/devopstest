@@ -26,7 +26,7 @@ pipeline {
 
         sh "sudo docker images"
 
-        sh "sudo cat docker.txt | docker login -u dangminhduc --password-stdin"
+        sh "sudo cat docker.txt | sudo docker login -u dangminhduc --password-stdin"
 
         sh "sudo docker tag devopstest-$ENV:latest dangminhduc/devopstest:$TAG"
 
