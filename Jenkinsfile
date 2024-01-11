@@ -47,7 +47,7 @@ pipeline {
 
       steps {
          sh "sudo sed -i 's|dangminhduc/devopstest:{tag}|dangminhduc/devopstest:$TAG|' deployment.yaml"
-         sh "kubectl get pod"
+         sh "kubectl apply -f deployment.yaml"
       }
     }
   }
