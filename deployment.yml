@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-demo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-demo
+  template:
+    metadata:
+      labels:
+        app: nodejs-demo
+    spec:
+      containers:
+        - name: nodejs-demo
+          image: dangminhduc/devopstest:{tag}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-demo-service
+spec:
+  type: NodePort
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 31222
+  selector:
+    app: nodejs-demo
+---
+
