@@ -22,11 +22,9 @@ kind: Service
 metadata:
   name: nodejs-demo-service
 spec:
-  type: NodePort
   ports:
     - port: 3000
       targetPort: 3000
-      nodePort: 31222
   selector:
     app: nodejs-demo
 ---
