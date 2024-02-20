@@ -8,10 +8,14 @@ pipeline {
 
   stages {
     stage('Build Image') {
+     environment {
+          CREDS = credentials('duc-docker-hub')
+      }
+
+
       agent {
         node {
           label "$NODE"
-          CREDS = credentials('duc-docker-hub')
         }
       }
 
