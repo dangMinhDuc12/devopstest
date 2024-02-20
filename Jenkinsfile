@@ -50,6 +50,8 @@ pipeline {
          //sh "sudo sed -i 's|dangminhduc/devopstest:{tag}|dangminhduc/devopstest:$TAG|' deployment.yaml"
          sh "kubectl apply -f deployment.yaml"
          sh "kubectl set image deployment/nodejs-demo-deployment nodejs-demo=dangminhduc/devopstest:$TAG"
+         sh "kubectl delete -f /home/team1_devops/devops-k8s/ingress/cilium"
+         sh "kubectl apply -f /home/team1_devops/devops-k8s/ingress/cilium/duc-nodejs-ingress.yaml"
       }
     }
   }

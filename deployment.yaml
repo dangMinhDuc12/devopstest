@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nodejs-demo-deployment
+  namespace: duc-nodejs
 spec:
   replicas: 1
   selector:
@@ -22,6 +23,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nodejs-demo-service
+  namespace: duc-nodejs
 spec:
   ports:
     - port: 3000
