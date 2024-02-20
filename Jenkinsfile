@@ -27,7 +27,7 @@ pipeline {
 
         sh "sudo docker images"
 
-        sh "sudo echo $CREDS_PWD | sudo docker login -u dangminhduc --password-stdin"
+        sh "sudo docker login -u dangminhduc -p $CREDS_PSW"
 
         sh "sudo docker tag devopstest-$ENV:latest dangminhduc/devopstest:$TAG"
 
