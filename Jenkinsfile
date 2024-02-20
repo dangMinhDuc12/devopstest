@@ -54,8 +54,17 @@ pipeline {
     }
 
     stage('Point domain') {
-        sh "kubectl delete -f /home/team1_devops/devops-k8s/ingress/cilium"
-        sh "kubectl apply -f /home/team1_devops/devops-k8s/ingress/cilium/duc-nodejs-ingress.yaml"
+         agent {
+            node {
+              label "worker-node-3"
+            }
+          }
+
+        steps {
+              sh "kubectl delete -f /home/team1_devops/devops-k8s/ingress/cilium"
+              sh "kubectl apply -f /home/team1_devops/devops-k8s/ingress/cilium/duc-nodejs-ingress.yaml"
+        }
+
     }
   }
 }
