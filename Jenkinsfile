@@ -2,7 +2,7 @@ pipeline {
   agent none
   environment {
     ENV = "dev"
-    NODE = "woker-node-3"
+    NODE = "worker-node-3"
     CREDS = credentials('duc-docker-hub')
   }
   
@@ -42,7 +42,7 @@ pipeline {
     stage('Deploy') {
       agent {
         node {
-          label "woker-node-3"
+          label "worker-node-3"
         }
       }
 
