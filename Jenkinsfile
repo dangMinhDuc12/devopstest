@@ -61,6 +61,14 @@ pipeline {
           }
 
         steps {
+              script {
+                  try {
+                      sh "kubectl delete -f /home/team1_devops/devops-k8s/ingress/cilium"
+                  } catch (err) {
+                         sh "kubectl apply -f /home/team1_devops/devops-k8s/ingress/cilium/duc-nodejs-ingress.yaml"
+                  }
+              }
+
               sh "kubectl delete -f /home/team1_devops/devops-k8s/ingress/cilium"
               sh "kubectl apply -f /home/team1_devops/devops-k8s/ingress/cilium/duc-nodejs-ingress.yaml"
         }
