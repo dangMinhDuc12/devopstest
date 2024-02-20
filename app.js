@@ -12,7 +12,7 @@ const { Pool } = require('pg');
 
 app.get('/heartbeat', async (req, res, next) => {
   // const test = await pool.query('SELECT NOW()');
-  return res.status(200).send('Heartbeat route');
+  return res.status(200).send('Heartbeat routeee');
 });
 
 app.listen(3000, () => {
