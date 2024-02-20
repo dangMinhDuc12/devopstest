@@ -3,16 +3,12 @@ pipeline {
   environment {
     ENV = "dev"
     NODE = "woker-node-3"
+    CREDS = credentials('duc-docker-hub')
   }
   
 
   stages {
     stage('Build Image') {
-     environment {
-          CREDS = credentials('duc-docker-hub')
-      }
-
-
       agent {
         node {
           label "$NODE"
