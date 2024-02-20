@@ -35,7 +35,6 @@ pipeline {
 
         sh "sudo docker rmi -f dangminhduc/devopstest:$TAG"
         sh "sudo docker rmi -f devopstest-$ENV:latest"
-        // sh "echo TAG_DEPLOY=$TAG > .env"
       }
     }
 
@@ -47,7 +46,6 @@ pipeline {
       }
 
       steps {
-         //sh "sudo sed -i 's|dangminhduc/devopstest:{tag}|dangminhduc/devopstest:$TAG|' deployment.yaml"
          sh "kubectl apply -f deployment.yaml"
          sh "kubectl set image deployment/nodejs-demo-deployment nodejs-demo=dangminhduc/devopstest:$TAG -n duc-nodejs"
       }
