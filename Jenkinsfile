@@ -11,6 +11,7 @@ pipeline {
       agent {
         node {
           label "$NODE"
+          CREDS = credentials('duc-docker-hub')
         }
       }
 
@@ -26,7 +27,7 @@ pipeline {
 
         sh "sudo docker images"
 
-        sh "sudo cat docker.txt | sudo docker login -u dangminhduc --password-stdin"
+        sh "sudo echo $CREDS_PWD | sudo docker login -u dangminhduc --password-stdin"
 
         sh "sudo docker tag devopstest-$ENV:latest dangminhduc/devopstest:$TAG"
 
