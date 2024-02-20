@@ -48,8 +48,8 @@ pipeline {
 
       steps {
          //sh "sudo sed -i 's|dangminhduc/devopstest:{tag}|dangminhduc/devopstest:$TAG|' deployment.yaml"
-         sh "kubectl set image deployment/nodejs-demo-deployment nodejs-demo=dangminhduc/devopstest:$TAG"
          sh "kubectl apply -f deployment.yaml"
+         sh "kubectl set image deployment/nodejs-demo-deployment nodejs-demo=dangminhduc/devopstest:$TAG"
       }
     }
   }
