@@ -2,7 +2,7 @@ pipeline {
   agent none
   environment {
     ENV = "dev"
-    NODE = "Jenkin-build-test"
+    NODE = "woker-node-3"
   }
   
 
@@ -41,7 +41,7 @@ pipeline {
     stage('Deploy') {
       agent {
         node {
-          label "Jenkin-build-test-deploy"
+          label "woker-node-3"
         }
       }
 
