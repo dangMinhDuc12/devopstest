@@ -17,8 +17,8 @@ const pool = new Pool({
 
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/heartbeat', async (req, res, next) => {
-  const test = await pool.query('SELECT NOW()');
-  return res.status(200).send('res from db', test);
+  const timeFromDb = await pool.query('SELECT NOW()');
+  return res.status(200).send({ timeFromDb: timeFromDb });
 });
 
 app.listen(3000, () => {
