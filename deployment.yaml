@@ -17,6 +17,18 @@ spec:
         - name: nodejs-demo
           image: dangminhduc/devopstest:latest
           imagePullPolicy: "Always"
+          env:
+            - name: DB_HOST
+              value: postgres
+            - name: DB_DATABASE
+              value: your_database_name
+            - name: DB_USERNAME
+              value: your_username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgres-password
 
 ---
 apiVersion: v1
