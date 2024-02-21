@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Duc NodeJS app
+  title: Duc NodeJS app V2
 paths:
   /heartbeat:
     get:
