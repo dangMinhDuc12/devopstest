@@ -3,7 +3,6 @@ pipeline {
   environment {
     ENV = "dev"
     NODE = "worker-node-3"
-    NODE_DEPLOY = "node-deploy"
     CREDS = credentials('duc-docker-hub')
   }
   
@@ -42,7 +41,7 @@ pipeline {
     stage('Deploy') {
       agent {
         node {
-          label "$NODE_DEPLOY"
+          label "worker-node-3"
         }
       }
 
@@ -55,7 +54,7 @@ pipeline {
     stage('Point domain') {
          agent {
             node {
-              label "$NODE_DEPLOY"
+              label "worker-node-3"
             }
           }
 
