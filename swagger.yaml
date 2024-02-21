@@ -1,0 +1,11 @@
+openapi: 3.0.0
+info:
+  title: Duc NodeJS app
+paths:
+  /heartbeat:
+    get:
+      tags:
+        - Base API
+      responses:
+        200:
+          description: Thành công
