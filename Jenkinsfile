@@ -46,7 +46,6 @@ pipeline {
       }
 
       steps {
-         sh "kubectl delete -f deployment.yaml"
          sh "kubectl apply -f deployment.yaml"
          sh "kubectl set image deployment/nodejs-demo-deployment nodejs-demo=dangminhduc/devopstest:$TAG -n python-demo"
       }
