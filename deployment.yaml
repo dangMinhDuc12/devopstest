@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodejs-demo-deployment
+  name: duc-nodejs-deployment
   namespace: python-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodejs-demo
+      app: duc-nodejs-demo
   template:
     metadata:
       labels:
-        app: nodejs-demo
+        app: duc-nodejs-demo
     spec:
       containers:
-        - name: nodejs-demo
+        - name: duc-nodejs-demo
           image: dangminhduc/devopstest:latest
           imagePullPolicy: "Always"
           env:
@@ -34,13 +34,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs-demo-service
+  name: duc-nodejs-demo-service
   namespace: python-demo
 spec:
   ports:
     - port: 6302
       targetPort: 6302
   selector:
-    app: nodejs-demo
+    app: duc-nodejs-demo
 ---
 
