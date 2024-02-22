@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const { Pool } = require('pg');
 const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./api-docs');
+const swaggerDocument = YAML.load('./api-docs.yaml');
 const swaggerUi = require('swagger-ui-express');
 
 const pool = new Pool({
