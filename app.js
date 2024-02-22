@@ -16,10 +16,10 @@ const pool = new Pool({
 
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/heartbeat', async (req, res, next) => {
-  const timeFromDb = await pool.query('SELECT NOW()');
-  return res.status(200).send({ timeFromDb: timeFromDb });
+  const versionDb = await pool.query('SELECT VERSION()');
+  return res.status(200).send({ versionDb });
 });
 
 app.listen(3000, () => {
-  console.log('application runningggg');
+  console.log('application running');
 });
