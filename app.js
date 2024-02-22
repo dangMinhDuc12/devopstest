@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const { Pool } = require('pg');
 const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./swagger.yaml');
+const swaggerDocument = YAML.load('./api-docs');
 const swaggerUi = require('swagger-ui-express');
 
 const pool = new Pool({
@@ -14,7 +14,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/heartbeat', async (req, res, next) => {
   const versionDb = await pool.query('SELECT VERSION()');
   return res.status(200).send({ versionDb });
