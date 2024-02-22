@@ -38,8 +38,8 @@ metadata:
   namespace: python-demo
 spec:
   ports:
-    - port: 3000
-      targetPort: 3000
+    - port: 6302
+      targetPort: 6302
   selector:
     app: nodejs-demo
 ---

@@ -20,6 +20,6 @@ app.get('/heartbeat', async (req, res, next) => {
   return res.status(200).send({ versionDb });
 });
 
-app.listen(3000, () => {
-  console.log('application running');
+app.listen(6302, () => {
+  console.log(`application running on port 6302`);
 });
