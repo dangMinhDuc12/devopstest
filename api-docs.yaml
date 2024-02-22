@@ -8,4 +8,4 @@ paths:
         - Base API
       responses:
         200:
-          description: Success
+          description: Thành công
