@@ -29,46 +29,46 @@ pipeline {
 
         sh "sudo docker login -u dangminhduc -p $CREDS_PSW"
 
-        sh "sudo docker tag devopstest-$ENV:latest dangminhduc/devopstest:$TAG"
+        sh "sudo docker tag devopstest-$ENV:latest dangminhduc/devopstest:latest"
 
-        sh "sudo docker push dangminhduc/devopstest:$TAG"
+        sh "sudo docker push dangminhduc/devopstest:latest"
 
-        sh "sudo docker rmi -f dangminhduc/devopstest:$TAG"
+        sh "sudo docker rmi -f dangminhduc/devopstest:latest"
         sh "sudo docker rmi -f devopstest-$ENV:latest"
       }
     }
 
-    stage('Deploy') {
-      agent {
-        node {
-          label "worker-node-3"
-        }
-      }
+    // stage('Deploy') {
+    //   agent {
+    //     node {
+    //       label "worker-node-3"
+    //     }
+    //   }
 
-      steps {
-         sh "kubectl apply -f deployment.yaml"
-         sh "kubectl set image deployment/nodejs-demo-deployment nodejs-demo=dangminhduc/devopstest:$TAG -n python-demo"
-      }
-    }
+    //   steps {
+    //      sh "kubectl apply -f deployment.yaml"
+    //      sh "kubectl set image deployment/nodejs-demo-deployment nodejs-demo=dangminhduc/devopstest:$TAG -n python-demo"
+    //   }
+    // }
 
-    stage('Point domain') {
-         agent {
-            node {
-              label "worker-node-3"
-            }
-          }
+    // stage('Point domain') {
+    //      agent {
+    //         node {
+    //           label "worker-node-3"
+    //         }
+    //       }
 
-        steps {
-            script {
-                try {
-                      sh "kubectl delete -f /home/team1_devops/devops-k8s/ingress/cilium"
-                      sh "kubectl apply -f /home/team1_devops/devops-k8s/ingress/cilium/duc-nodejs-ingress.yaml"
-                } catch (err) {
-                      sh "kubectl apply -f /home/team1_devops/devops-k8s/ingress/cilium/duc-nodejs-ingress.yaml"
-                }
-            }
-        }
+    //     steps {
+    //         script {
+    //             try {
+    //                   sh "kubectl delete -f /home/team1_devops/devops-k8s/ingress/cilium"
+    //                   sh "kubectl apply -f /home/team1_devops/devops-k8s/ingress/cilium/duc-nodejs-ingress.yaml"
+    //             } catch (err) {
+    //                   sh "kubectl apply -f /home/team1_devops/devops-k8s/ingress/cilium/duc-nodejs-ingress.yaml"
+    //             }
+    //         }
+    //     }
 
-    }
+    // }
   }
 }
