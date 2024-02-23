@@ -17,7 +17,7 @@ const pool = new Pool({
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/heartbeat', async (req, res, next) => {
   const versionDb = await pool.query('SELECT VERSION()');
-  return res.status(200).send({ versionFromDb: versionDb });
+  return res.status(200).send({ versionFromDbb: versionDb });
 });
 
 app.listen(6302, () => {
