@@ -6,18 +6,18 @@ const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./api-docs.yaml');
 const swaggerUi = require('swagger-ui-express');
 
-const pool = new Pool({
-  user: process.env.DB_USERNAME,
-  host: process.env.DB_HOST,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASSWORD,
-  port: 5432,
-});
+// const pool = new Pool({
+//   user: process.env.DB_USERNAME,
+//   host: process.env.DB_HOST,
+//   database: process.env.DB_DATABASE,
+//   password: process.env.DB_PASSWORD,
+//   port: 5432,
+// });
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/heartbeat', async (req, res, next) => {
-  const versionDb = await pool.query('SELECT VERSION()');
-  return res.status(200).send({ versionFromDb: versionDb });
+  // const versionDb = await pool.query('SELECT VERSION()');
+  return res.status(200).send({ versionFromDb: 'test' });
 });
 
 app.listen(6302, () => {

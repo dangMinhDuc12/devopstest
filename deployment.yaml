@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: duc-nodejs-deployment
-  namespace: python-demo
+#  namespace: python-demo
 spec:
   replicas: 1
   selector:
@@ -17,25 +17,25 @@ spec:
         - name: duc-nodejs-demo
           image: dangminhduc/devopstest:latest
           imagePullPolicy: "Always"
-          env:
-            - name: DB_HOST
-              value: postgres
-            - name: DB_DATABASE
-              value: your_database_name
-            - name: DB_USERNAME
-              value: your_username
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: postgres-password
+#          env:
+#            - name: DB_HOST
+#              value: postgres
+#            - name: DB_DATABASE
+#              value: your_database_name
+#            - name: DB_USERNAME
+#              value: your_username
+#            - name: DB_PASSWORD
+#              valueFrom:
+#                secretKeyRef:
+#                  name: postgres-secret
+#                  key: postgres-password
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: duc-nodejs-demo-service
-  namespace: python-demo
+#  namespace: python-demo
 spec:
   ports:
     - port: 6302
